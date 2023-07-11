@@ -10,11 +10,10 @@ export class Order implements IOrder {
     @Prop() firstName: string;
     @Prop() lastName: string;
     @Prop() email: string;
-    @Prop() telephone: number;
+    @Prop() telephone: string;
     @Prop() adress: string;
     @Prop() productId: string;
     @Prop() userId: string;
-    @Prop() _id?: string
 
 }
 

@@ -3,6 +3,7 @@ import {Model} from "mongoose";
 import {Order, OrderDocument} from "../../shemas/order";
 import {InjectModel} from "@nestjs/mongoose";
 import {OrderDto} from "../../dto/order-dto";
+import {IOrder} from "../../interface/order";
 
 @Injectable()
 export class OrderService {
@@ -10,12 +11,12 @@ export class OrderService {
     constructor(@InjectModel(Order.name) private orderModel: Model<OrderDocument>) {}
 
     //записывает наш заказ и создает новую запись
-    async sendOrder(data: OrderDto): Promise<Order>{
+    async sendOrder(data: OrderDto): Promise<any>{
         const orderData = new this.orderModel(data);
         return orderData.save()
     }
 
-    async getOrders(userId): Promise<Order[]> {
-        return this.orderModel.find({"userId": userId});
+    async getOrders(): Promise<Order[]> {
+        return this.orderModel.find();
     }
 }
